@@ -6,14 +6,13 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('MISU PARK API')
-    .setDescription('The User management API description')
+    .setTitle('박미수의 API')
+    .setDescription('마인즈에이아이 기술면접')
     .setVersion('1.0')
-    .addTag('user')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, document);
 
-  await app.listen(3100);
+  await app.listen(Number(process.env.API_PORT));
 }
 bootstrap();
